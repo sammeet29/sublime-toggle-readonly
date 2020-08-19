@@ -24,3 +24,8 @@ class ToggleReadonlyListener(sublime_plugin.EventListener):
 
     def on_activated(self, view):
         ToggleReadonlyListener.check_readonly(view)
+
+    def on_load(self, view):
+        view.set_read_only(True)
+        view.set_status('read only')
+        print(view.file_name())
