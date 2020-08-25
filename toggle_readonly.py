@@ -29,3 +29,4 @@ class ToggleReadonlyListener(sublime_plugin.EventListener):
         view.set_read_only(True)
         view.set_status('read only')
         print(view.file_name())
+        
