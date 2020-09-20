@@ -26,7 +26,9 @@ class ToggleReadonlyListener(sublime_plugin.EventListener):
         ToggleReadonlyListener.check_readonly(view)
 
     def on_load(self, view):
-        view.set_read_only(True)
-        view.set_status('read only')
-        print(view.file_name())
-        
+        s = sublime.load_settings("toggle_readonly.sublime-settings")
+
+        # if the settings says so, set the file to read only
+        make_read_only = s.get("read_only_when_open")
+        if(make_read_only == True):
+            view.set_read_only(True)
